@@ -121,12 +121,7 @@ const FilmCard = styled.div`
   line-height: 0;
   padding: 0.5rem 0;
   margin: 1rem 0;
-
   @media only screen and (max-width: 525px) {
     width: 80vw;
   }
-`;
-const List = styled.ul`
-  list-style-type: "- ";
-  padding-left: 1.2rem;
 `;
