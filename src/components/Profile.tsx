@@ -4,10 +4,20 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Film from "./Film";
 
+type ProfileParams={
+  id:string;
+}
+interface IProfile {
+  name:string,
+  height: string,
+  eye_color:string,
+  birth_year: string,
+  hair_color:string,
+}
 export default function Profile() {
-  const { id } = useParams();
+  const { id } = useParams<ProfileParams>();
   const [isLoading, setIsLoading] = useState(false);
-  const [profile, setProfile] = useState({});
+  const [profile, setProfile] = useState<IProfile | null>(null);
   const [films, setFilms] = useState([]);
   const [error, setError] = useState("");
 
@@ -29,23 +39,23 @@ export default function Profile() {
 
   return (
     <Wrapper>
-      {isLoading && profile.length && films.length === 0 ? (
+      {isLoading && films.length === 0 ? (
         <h3>Loading...</h3>
       ) : (
         <div>
-          <h1>{profile.name}</h1>
+          <h1>{profile?.name}</h1>
           <ProfileData>
             <Card>
-              <h5>Height: {profile.height}</h5>
+              <h5>Height: {profile?.height}</h5>
             </Card>
             <Card>
-              <h5>Eye color: {profile.eye_color}</h5>
+              <h5>Eye color: {profile?.eye_color}</h5>
             </Card>
             <Card>
-              <h5>Birth date: {profile.birth_year}</h5>
+              <h5>Birth date: {profile?.birth_year}</h5>
             </Card>
             <Card>
-              <h5>Hair color: {profile.hair_color}</h5>
+              <h5>Hair color: {profile?.hair_color}</h5>
             </Card>
           </ProfileData>
 

@@ -2,9 +2,16 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+interface IPeople {
+  name:string,
+  height: number,
+  birth_year: string,
+  films: string[],
+  url:string,
+}
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
-  const [allPeople, setAllPeople] = useState([]);
+  const [allPeople, setAllPeople] = useState<IPeople[]>([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const [error, setError] = useState("");
