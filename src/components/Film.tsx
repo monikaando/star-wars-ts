@@ -11,6 +11,7 @@ interface IFilm {
 const Film = (props: FilmProps) => {
   const [film, setFilm] = useState<IFilm | null>(null);
   const [error, setError] = useState("");
+
   useEffect(() => {
     fetch(props.url)
       .then((response) => {
@@ -30,8 +31,8 @@ const Film = (props: FilmProps) => {
     </div>
   );
 };
-
 export default Film;
+
 const List = styled.p`
   padding-left: 1.2rem;
 `;
