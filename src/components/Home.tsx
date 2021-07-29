@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 interface IPeople {
-  name:string,
-  height: number,
-  birth_year: string,
-  films: string[],
-  url:string,
+  name: string;
+  height: number;
+  birth_year: string;
+  films: string[];
+  url: string;
 }
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +52,7 @@ function Home() {
                 return (
                   <Link to={`/profile/${id}`} key={id}>
                     <Card key={item.name} data-cy={`card-${id}`}>
-                      <h4 data-cy={`card-${id}-name`}>{item.name}</h4>
+                      <Name data-cy={`card-${id}-name`}>{item.name}</Name>
                       <h5>Height: {item.height} cm</h5>
                       <h5>Birth year: {item.birth_year}</h5>
                       <h5>{item.films.length} Films</h5>
@@ -112,6 +112,9 @@ const Card = styled.div`
   @media only screen and (max-width: 525px) {
     width: 80vw;
   }
+`;
+const Name = styled.h2`
+  margin-bottom: 3rem;
 `;
 const Button = styled.button`
   width: 28vw;

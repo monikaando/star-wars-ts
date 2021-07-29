@@ -4,15 +4,15 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Film from "./Film";
 
-type ProfileParams={
-  id:string;
-}
+type ProfileParams = {
+  id: string;
+};
 interface IProfile {
-  name:string,
-  height: string,
-  eye_color:string,
-  birth_year: string,
-  hair_color:string,
+  name: string;
+  height: string;
+  eye_color: string;
+  birth_year: string;
+  hair_color: string;
 }
 export default function Profile() {
   const { id } = useParams<ProfileParams>();
@@ -62,10 +62,9 @@ export default function Profile() {
           {films ? <h4>{films.length} film(s)</h4> : null}
           <FilmCard>
             {films.map((item) => {
-              return <Film url={item} />;
+              return <Film key={item} url={item} />;
             })}
           </FilmCard>
-
           <Link data-cy="link-home" to="/">
             <Button> Back to home...</Button>
           </Link>
@@ -78,6 +77,9 @@ export default function Profile() {
 const Wrapper = styled.section`
   margin: 2rem 3rem;
   padding-right: 15rem;
+  @media only screen and (max-width: 525px) {
+    padding-right: 0;
+  }
 `;
 const Button = styled.button`
   width: 10vw;
@@ -88,7 +90,7 @@ const Button = styled.button`
   border-radius: 0.2rem;
   cursor: pointer;
   @media only screen and (max-width: 525px) {
-    width: 88vw;
+    width: 80vw;
   }
 `;
 const ProfileData = styled.div`
@@ -99,7 +101,7 @@ const ProfileData = styled.div`
 const Card = styled.div`
   display: flex;
   justify-content: center;
-  width: 15vw;
+  min-width: 20vw;
   background: #fffefc;
   border: 0.1rem solid black;
   border-radius: 0.2rem;
